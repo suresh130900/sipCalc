@@ -1,7 +1,9 @@
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:sip_calc/classes/language_constant.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class SipCalc extends StatefulWidget {
   const SipCalc({super.key});
@@ -120,14 +122,15 @@ class _SipCalcState extends State<SipCalc> with SingleTickerProviderStateMixin {
               maxLength: 2,
               controller: annualInterestRateController,
               keyboardType: TextInputType.number,
-              decoration: InputDecoration(
+              decoration: const InputDecoration(
                   labelText: 'Enter Your Annual Interest rate',
                   labelStyle: TextStyle(fontSize: 16),
                   suffixIcon: Icon(
                     CupertinoIcons.percent,
                     size: 23,
                   ),
-                  border: OutlineInputBorder()),
+                  border: OutlineInputBorder(),
+              ),
             ),
             _SizedBox(10),
             _Text("Time Period", 20, FontWeight.w700),
@@ -139,7 +142,7 @@ class _SipCalcState extends State<SipCalc> with SingleTickerProviderStateMixin {
               maxLength: 2,
               controller: timePeriodController,
               keyboardType: TextInputType.number,
-              decoration: InputDecoration(
+              decoration: const InputDecoration(
                 labelText: 'Enter Your Time Period',
                 labelStyle: TextStyle(fontSize: 16),
                 suffix: Text(
@@ -196,8 +199,9 @@ class _SipCalcState extends State<SipCalc> with SingleTickerProviderStateMixin {
                 //_launchUrl;
                 launchUrl(Uri.parse("https://cashrich.com/"));
               },
-              child: Text("Invest Now"),
+              child: const Text("Invest Now"),
             ),
+            _Text(translation(context).homePage, 20, FontWeight.w700)
           ],
         ),
       ),
@@ -214,17 +218,17 @@ Widget _buildCards(String title, double value) {
         children: [
           Text(
             title,
-            style: TextStyle(fontSize: 20, fontWeight: FontWeight.w700),
+            style: const TextStyle(fontSize: 20, fontWeight: FontWeight.w700),
           ),
-          Spacer(),
-          Text(
+          const Spacer(),
+          const Text(
             "Rs ",
             style: TextStyle(
                 fontSize: 20, color: Colors.blue, fontWeight: FontWeight.w700),
           ),
           Text(
             value.toStringAsFixed(2),
-            style: TextStyle(
+            style: const TextStyle(
                 fontSize: 20, color: Colors.blue, fontWeight: FontWeight.w700),
           ),
         ],
@@ -248,10 +252,3 @@ Widget _Text(String data, double FontSize, FontWeight) {
     ),
   );
 }
-// _launchWebsite(String url) async {
-//   if (await canLaunch(url)) {
-//     await launch(url);
-//   } else {
-//     throw 'Could not launch $url';
-//   }
-// }

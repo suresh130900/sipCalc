@@ -1,9 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:sip_calc/Views/demo.dart';
-import 'package:sip_calc/Views/graph.dart';
 
+import '../classes/language.dart';
+import '../classes/language_constant.dart';
 import '../main.dart';
 import 'lineGraph.dart';
 import 'sipCalc.dart';
@@ -28,6 +28,37 @@ class ThemeColour extends StatelessWidget {
         ),
         actions: [
           ThemeSwitchButton(),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: DropdownButton<Language>(
+              underline: const SizedBox(),
+              icon: const Icon(
+                Icons.language,
+              ),
+              onChanged: (Language? language) async {
+                if (language != null) {
+                  Locale _locale = await setLocale(language.languageCode);
+                  MyApp.setLocale(context, _locale);
+                }
+              },
+              items: Language.languageList()
+                  .map<DropdownMenuItem<Language>>(
+                    (e) => DropdownMenuItem<Language>(
+                  value: e,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: <Widget>[
+                      Text(
+                        e.flag,
+                        style: const TextStyle(fontSize: 30),
+                      ),
+                      Text(e.name)
+                    ],
+                  ),
+                ),
+              ).toList(),
+            ),
+          ),
         ],
       ),
       body: SingleChildScrollView(
@@ -35,14 +66,6 @@ class ThemeColour extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             SipCalc(),
-            // Container(
-            //   height: 300,
-            //   child: LineChartSample1(),
-            // ),
-            // Container(
-            //   height: 400,
-            //   child: SIPCalculatorWidget(),
-            // ),
           ],
         ),
       ),
