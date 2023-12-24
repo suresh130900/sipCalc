@@ -23,7 +23,7 @@ class ThemeColour extends StatelessWidget {
             SizedBox(
               width: MediaQuery.of(context).size.width / 20,
             ),
-            Text('Sip Calculator'),
+            Text(translation(context).sipCalculator),
           ],
         ),
         actions: [

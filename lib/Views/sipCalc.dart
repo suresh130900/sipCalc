@@ -96,7 +96,7 @@ class _SipCalcState extends State<SipCalc> with SingleTickerProviderStateMixin {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
-            _Text("Monthly Investment", 20, FontWeight.w700),
+            _Text(translation(context).monthlyInvestment, 20, FontWeight.w700),
             _SizedBox(20),
             TextField(
               maxLength: 6,
@@ -106,14 +106,14 @@ class _SipCalcState extends State<SipCalc> with SingleTickerProviderStateMixin {
                 calculateReturns();
               },
               decoration: InputDecoration(
-                labelText: 'Enter Your Monthly Investment',
+                labelText: translation(context).enterMonthly,
                 labelStyle: TextStyle(fontSize: 20),
                 prefixIcon: Icon(Icons.currency_rupee),
                 border: OutlineInputBorder(),
               ),
             ),
             _SizedBox(10),
-            _Text("Expected Return Rate(P.a) ", 20, FontWeight.w700),
+            _Text(translation(context).expectedReturn, 20, FontWeight.w700),
             _SizedBox(20),
             TextField(
               onChanged: (text) {
@@ -122,8 +122,8 @@ class _SipCalcState extends State<SipCalc> with SingleTickerProviderStateMixin {
               maxLength: 2,
               controller: annualInterestRateController,
               keyboardType: TextInputType.number,
-              decoration: const InputDecoration(
-                  labelText: 'Enter Your Annual Interest rate',
+              decoration: InputDecoration(
+                  labelText: translation(context).annualInterest,
                   labelStyle: TextStyle(fontSize: 16),
                   suffixIcon: Icon(
                     CupertinoIcons.percent,
@@ -133,7 +133,7 @@ class _SipCalcState extends State<SipCalc> with SingleTickerProviderStateMixin {
               ),
             ),
             _SizedBox(10),
-            _Text("Time Period", 20, FontWeight.w700),
+            _Text(translation(context).timePeriod, 20, FontWeight.w700),
             _SizedBox(20),
             TextField(
               onChanged: (text) {
@@ -142,8 +142,8 @@ class _SipCalcState extends State<SipCalc> with SingleTickerProviderStateMixin {
               maxLength: 2,
               controller: timePeriodController,
               keyboardType: TextInputType.number,
-              decoration: const InputDecoration(
-                labelText: 'Enter Your Time Period',
+              decoration: InputDecoration(
+                labelText: translation(context).enterTime,
                 labelStyle: TextStyle(fontSize: 16),
                 suffix: Text(
                   "Yr",
@@ -156,11 +156,11 @@ class _SipCalcState extends State<SipCalc> with SingleTickerProviderStateMixin {
               ),
             ),
             _SizedBox(20),
-            _buildCards("Invested Amount", totalInvested),
+            _buildCards(translation(context).investedAmount, totalInvested),
             _SizedBox(20),
-            _buildCards("Est. returns", totalReturns),
+            _buildCards(translation(context).estimatedReturn, totalReturns),
             _SizedBox(20),
-            _buildCards("Total Value", futureValue),
+            _buildCards(translation(context).totalValue, futureValue),
             _SizedBox(20),
             SizedBox(
               height: 300,
@@ -199,9 +199,9 @@ class _SipCalcState extends State<SipCalc> with SingleTickerProviderStateMixin {
                 //_launchUrl;
                 launchUrl(Uri.parse("https://cashrich.com/"));
               },
-              child: const Text("Invest Now"),
+              child: Text(translation(context).investNow),
             ),
-            _Text(translation(context).homePage, 20, FontWeight.w700)
+            //_Text(translation(context).homePage, 20, FontWeight.w700)
           ],
         ),
       ),
