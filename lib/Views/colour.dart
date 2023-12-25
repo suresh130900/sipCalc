@@ -14,9 +14,7 @@ class ThemeColour extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: Icon(
-          CupertinoIcons.graph_circle
-        ),
+        leading: Icon(CupertinoIcons.graph_circle),
         title: Row(
           children: [
             SizedBox(
@@ -43,24 +41,25 @@ class ThemeColour extends StatelessWidget {
               items: Language.languageList()
                   .map<DropdownMenuItem<Language>>(
                     (e) => DropdownMenuItem<Language>(
-                  value: e,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: <Widget>[
-                      Text(
-                        e.flag,
-                        style: const TextStyle(fontSize: 30),
+                      value: e,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        children: <Widget>[
+                          Text(
+                            e.flag,
+                            style: const TextStyle(fontSize: 30),
+                          ),
+                          Text(e.name)
+                        ],
                       ),
-                      Text(e.name)
-                    ],
-                  ),
-                ),
-              ).toList(),
+                    ),
+                  )
+                  .toList(),
             ),
           ),
         ],
       ),
-      body: SingleChildScrollView(
+      body: const SingleChildScrollView(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -71,6 +70,7 @@ class ThemeColour extends StatelessWidget {
     );
   }
 }
+
 class ThemeSwitchButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
