@@ -5,7 +5,6 @@ import 'package:provider/provider.dart';
 import '../classes/language.dart';
 import '../classes/language_constant.dart';
 import '../main.dart';
-import 'lineGraph.dart';
 import 'sipCalc.dart';
 
 class ThemeColour extends StatelessWidget {
